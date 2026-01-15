@@ -1,0 +1,60 @@
+public class BinarySearchNilaiMahasiswa {
+
+    public static int binarySearch(int[] nilai, int key) {
+        int low = 0;
+        int high = nilai.length - 1;
+        int langkah = 0;
+
+        while (low <= high) {
+            langkah++;
+            int mid = (low + high) / 2;
+
+            System.out.println(
+                "Langkah ke-" + langkah +
+                " | Low=" + low +
+                " | High=" + high +
+                " | Mid=" + mid +
+                " | NilaiMid=" + nilai[mid]
+            );
+
+            if (nilai[mid] == key) {
+                System.out.println("Total langkah pencarian: " + langkah);
+                return mid;
+            } else if (key < nilai[mid]) {
+                high = mid - 1;
+            } else {
+                low = mid + 1;
+            }
+        }
+
+        System.out.println("Total langkah pencarian: " + langkah);
+        return -1;
+    }
+
+    public static void main(String[] args) {
+
+        
+        int[] nilaiMahasiswa = {55, 60, 65, 70, 75, 80, 85, 90};
+        int nilaiCari = 75;
+
+        System.out.println("=== SISTEM PENCARIAN NILAI MAHASISWA ===");
+        System.out.print("Data nilai: ");
+        for (int n : nilaiMahasiswa) {
+            System.out.print(n + " ");
+        }
+
+        System.out.println("\n\nNilai yang dicari: " + nilaiCari);
+        System.out.println("\nProses Binary Search:");
+
+        
+        int hasil = binarySearch(nilaiMahasiswa, nilaiCari);
+
+        
+        if (hasil != -1) {
+            System.out.println("\nStatus: NILAI DITEMUKAN");
+            System.out.println("Indeks ditemukan: " + hasil);
+        } else {
+            System.out.println("\nStatus: NILAI TIDAK DITEMUKAN");
+        }
+    }
+}
